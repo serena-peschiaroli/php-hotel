@@ -111,22 +111,27 @@ $hotels = [
                 <tbody>
                     <?php
                     $count = 1; //inizializzare un counter per hotel #
+
+                    //inizializzare un array per controllare il filtro
+
+                    $starsValues = ['1', '2', '3', '4', '5'];
+
                     
                     
                     //controllare se filtro parcheggio è selezionato e se non lo è, mostra tutti
                     $parkingFilter =
                     isset($_GET['parkingFilter']) && $_GET['parkingFilter'] !== '' ? $_GET['parkingFilter'] : 'all';
 
-                    //controllare se filtro stella è selezionato , mostra tutti se no
-                    $starsFilter =
-                    isset($_GET['starsFilter']) && $_GET['starsFilter'] !== '' ? $_GET['starsFilter'] : 'all';
+                    //array per filtro: quando selezionato 1 oppure 5, mostra SOLO alberghi == selectedValue; altrimenti, valori >= selectedValue
+                    $starsFilter = isset($_GET['starsFilter']) && $_GET['starsFilter'] !== '' && in_array($_GET['starsFilter'], $starsValues) ? $_GET['starsFilter'] : 'all';
 
                     //iterare attraverso hotel in array
                     foreach ($hotels as $hotel) {
                         //applicare il filtro
                         if (
                             ($parkingFilter == 'all' || ($parkingFilter == 'yes' && $hotel['parking']) || ($parkingFilter == 'no' && !$hotel['parking'])) &&
-                            ($starsFilter == 'all' || ($starsFilter == '1' && $hotel['vote'] == 1) || ($starsFilter == '2' && $hotel['vote'] >= 2) || ($starsFilter == '3' && $hotel['vote'] >= 3) || ($starsFilter == '4' && $hotel['vote'] >= 4) || ($starsFilter == '5' && $hotel['vote'] == 5))
+                            // ($starsFilter == 'all' || ($starsFilter == '1' && $hotel['vote'] == 1) || ($starsFilter == '2' && $hotel['vote'] >= 2) || ($starsFilter == '3' && $hotel['vote'] >= 3) || ($starsFilter == '4' && $hotel['vote'] >= 4) || ($starsFilter == '5' && $hotel['vote'] == 5))
+                            ($starsFilter == 'all' || ($starsFilter == '5' && $hotel['vote'] == 5) || (in_array($starsFilter, ['1', '5']) && $hotel['vote'] == (int)$starsFilter) || ($starsFilter != '1' && $starsFilter != '5' && $hotel['vote'] >= (int)$starsFilter))
                         ) {
 
 

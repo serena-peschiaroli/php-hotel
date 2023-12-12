@@ -26,3 +26,9 @@ Se non viene specificato nessun filtro, visualizzare come in precedenza tutti gl
 **soluzione:**
  - aggiungere un secondo select (resta metodo get); come nel primo caso, controllare se il filtro è stato impostato, altrimenti return 'all'; 
  - all'interno del foreach, applicare il filtro con tutte le condizioni; eseguire il codice
+ - condizione per il voto: dichiarare array con valori relativi al voto= ['1', '2', '3', '4', '5'];
+ si cerca nell'array 1 0 5, se true, si mostrano solo i valori == valore selezionato. ALTRIMENTI, gli alrti valori sono >= valore selezionato 
+    referenze: funzione in_array: — Checks if a value exists in an array
+    
+    **in_array(mixed $needle, array $haystack, bool $strict = false): bool**
+    Searches for needle in haystack using loose comparison unless strict is set.
