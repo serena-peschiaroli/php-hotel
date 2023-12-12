@@ -55,6 +55,17 @@ $hotels = [
 </head>
 
 <body>
+    <form method="GET">
+        <select class="form-select" aria-label="Default select example" name="parkingFilter" id="parkingFilter">
+            <option selected>Seleziona: </option>
+            <option value="all">Tutti</option>
+            <option value="yes">Con parcheggio</option>
+            <option value="no">Senza Parcheggio</option>
+        </select>
+        <button type="submit" class="btn btn-primary">INVIA</button>
+    </form>
+
+
     <div>
         <table class="table">
             <thead>
@@ -68,28 +79,36 @@ $hotels = [
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                $count =1; //inizializzare un counter per hotel #
+                <?php
+                $count = 1; //inizializzare un counter per hotel #
+                //controlla se un filtro per parcheggio è selezionato nel GET, altrimenti mostra tutti
+
+                $parkingFilter = isset($_GET['parkingFilter']) ? $_GET['parkingFilter'] : 'all';
 
                 //iterare attraverso hotel in array
                 foreach ($hotels as $hotel) {
-                    echo '<tr>';
-                    //hotel number
-                    echo '<th scope="row">' . $count++ .'</th>';
-                    //nome hotel  
-                    echo '<td>' . $hotel['name'] . '</td>';
-                    //descrizione htl
-                    echo '<td>' . $hotel['description'] . '</td>';
-                    //parcheggio htl con operatore ternario, stampa si se true o no se false
-                    echo '<td> Parking:' . ($hotel['parking'] ? 'yes' : 'no') . '</td>';
-                    //stampa voto hotel
-                    echo '<td> vote:' . $hotel['vote']  . '</td>';
-                    //stampa distanza dal centro
-                    echo '<td> Distance to center:' . $hotel['distance_to_center']  . 'km </td>';
-                    //lchiudere tabella
-                    echo '</tr>';
+                    //applicare il filtro
+                    if ($parkingFilter == 'all' || ($parkingFilter == 'yes' && $hotel['parking']) || ($parkingFilter == 'no' && !$hotel['parking'])){
+                        
+                    
+                        echo '<tr>';
+                        //hotel number
+                        echo '<th scope="row">' . $count++ . '</th>';
+                        //nome hotel  
+                        echo '<td>' . $hotel['name'] . '</td>';
+                        //descrizione htl
+                        echo '<td>' . $hotel['description'] . '</td>';
+                        //parcheggio htl con operatore ternario, stampa si se true o no se false
+                        echo '<td> Parking:' . ($hotel['parking'] ? 'yes' : 'no') . '</td>';
+                        //stampa voto hotel
+                        echo '<td> vote:' . $hotel['vote']  . '</td>';
+                        //stampa distanza dal centro
+                        echo '<td> Distance to center:' . $hotel['distance_to_center']  . 'km </td>';
+                        //lchiudere tabella
+                        echo '</tr>';
+                    }
                 }
-                     
+
                 ?>
             </tbody>
         </table>
