@@ -55,24 +55,45 @@ $hotels = [
 </head>
 
 <body>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Parking</th>
+                    <th scope="col">Vote</th>
+                    <th scope="col">Distance to center</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $count =1; //inizializzare un counter per hotel #
 
-    <?php
-    //iterare attraverso hotel in array
-    foreach ($hotels as $hotel) {
-        //nome hotel  
-        echo '<h2>' . $hotel['name'] . '</h2>';
-        //descrizione htl
-        echo '<p>' . $hotel['description'] . '</p>';
-        //parcheggio htl con operatore ternario, stampa si se true o no se false
-        echo '<p> Parking:' . ($hotel['parking'] ? 'yes' : 'no') . '</p>';
-        //stampa voto hotel
-        echo '<p> vote:' . $hotel['vote']  . '</p>';
-        //stampa distanza dal centro
-        echo '<p> Distance to center:' . $hotel['distance_to_center']  . 'km </p>';
-        //linea di stacco
-        echo '<hr>';
-    }
-    ?>
+                //iterare attraverso hotel in array
+                foreach ($hotels as $hotel) {
+                    echo '<tr>';
+                    //hotel number
+                    echo '<th scope="row">' . $count++ .'</th>';
+                    //nome hotel  
+                    echo '<td>' . $hotel['name'] . '</td>';
+                    //descrizione htl
+                    echo '<td>' . $hotel['description'] . '</td>';
+                    //parcheggio htl con operatore ternario, stampa si se true o no se false
+                    echo '<td> Parking:' . ($hotel['parking'] ? 'yes' : 'no') . '</td>';
+                    //stampa voto hotel
+                    echo '<td> vote:' . $hotel['vote']  . '</td>';
+                    //stampa distanza dal centro
+                    echo '<td> Distance to center:' . $hotel['distance_to_center']  . 'km </td>';
+                    //lchiudere tabella
+                    echo '</tr>';
+                }
+                     
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 

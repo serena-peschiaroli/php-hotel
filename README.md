@@ -10,7 +10,7 @@ Iniziate in modo graduale.
 **Soluzione**:
  - tramite ciclo foreach iterare tutti i valori dell'array e stamparli su pagina; per parcheggio, usare operatore ternario;
 
-- [] Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella.
+- [X] Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella.
 
 Bonus:
 1 - Aggiungere un form ad inizio pagina che tramite una richiesta GET permetta di filtrare gli hotel che hanno un parcheggio.
