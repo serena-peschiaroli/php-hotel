@@ -130,7 +130,8 @@ $hotels = [
                         //applicare il filtro
                         if (
                             ($parkingFilter == 'all' || ($parkingFilter == 'yes' && $hotel['parking']) || ($parkingFilter == 'no' && !$hotel['parking'])) &&
-                            // ($starsFilter == 'all' || ($starsFilter == '1' && $hotel['vote'] == 1) || ($starsFilter == '2' && $hotel['vote'] >= 2) || ($starsFilter == '3' && $hotel['vote'] >= 3) || ($starsFilter == '4' && $hotel['vote'] >= 4) || ($starsFilter == '5' && $hotel['vote'] == 5))
+                            
+                            // (int)$starsFilter serve per tradurre stringa 'nvoto' in numero per poterlo comparare $hotel['vote'] >= (int)$starsFilter
                             ($starsFilter == 'all' || ($starsFilter == '5' && $hotel['vote'] == 5) || (in_array($starsFilter, ['1', '5']) && $hotel['vote'] == (int)$starsFilter) || ($starsFilter != '1' && $starsFilter != '5' && $hotel['vote'] >= (int)$starsFilter))
                         ) {
 
