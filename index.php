@@ -100,12 +100,13 @@ $hotels = [
             <table class="table">
                 <thead>
                     <tr>
+                         <!-- si può fare un secondo foreach $hotels[0] as $key => $value per stampare dimanicamente le key i/o inserirle in maniera statica -->
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Parking</th>
-                        <th scope="col">Vote</th>
-                        <th scope="col">Distance to center</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrizione</th>
+                        <th scope="col">Parcheggio</th>
+                        <th scope="col">Voto</th>
+                        <th scope="col">Distanza dal centro</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -144,9 +145,9 @@ $hotels = [
                             //descrizione htl
                             echo '<td>' . $hotel['description'] . '</td>';
                             //parcheggio htl con operatore ternario, stampa si se true o no se false
-                            echo '<td> Parking:' . ($hotel['parking'] ? 'yes' : 'no') . '</td>';
+                            echo '<td>' . ($hotel['parking'] ? 'sì' : 'no') . '</td>';
                             //stampa voto hotel
-                            echo '<td> vote:' . $hotel['vote']  . '</td>';
+                            echo '<td>' . $hotel['vote']  . '/5 </td>';
                             //stampa distanza dal centro
                             echo '<td> ' . $hotel['distance_to_center']  . 'km </td>';
                             //lchiudere tabella
