@@ -39,6 +39,14 @@ $hotels = [
 
 ];
 
+
+// NOTE DA CORREZIONE, LOGICA: se esiste chiave parking in GET, ALLORA applichiamo ns filtro
+/* si può creare un uovo array filtered_hotel = hotels dove applicare un foreach (filtered_hotels as hotels), si crea un temp_array dove pushare l'hotel dove parking = true;
+poi salvare all'interno di filtered_hotels temp_array;  
+
+nel foreach originario si va a cambiare foreach filtered_hotels in hotels ( quando filtro = ''; ritorna cmq tutti gli hotel)
+*/ 
+
 ?>
 
 
